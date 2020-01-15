@@ -13,6 +13,7 @@ public class DatabaseConfiguration {
             dbProperties = DatabaseConfiguration.class.getClassLoader().getResourceAsStream("db.properties");
         try {
             Properties properties=new Properties();
+            if( dbProperties != null)
             properties.load(dbProperties);
             return DriverManager.getConnection(properties.getProperty("url"),properties.getProperty("username"),properties.getProperty("password"));
         } finally {
