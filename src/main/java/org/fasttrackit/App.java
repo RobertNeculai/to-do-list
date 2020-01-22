@@ -1,6 +1,7 @@
 package org.fasttrackit;
 
 import org.fasttrackit.persistance.TaskRepository;
+import org.fasttrackit.service.TaskService;
 import org.fasttrackit.transfer.CreateTaskRequest;
 
 import java.io.IOException;
@@ -17,11 +18,13 @@ public class App
       // CreateTaskRequest request=new CreateTaskRequest();
       // request.setDescription("learn JDBC");
        //request.setDeadline(LocalDate.now().plusWeeks(1));
-       TaskRepository taskRepository=new TaskRepository();
+        TaskService taskService=new TaskService();
+       //TaskRepository taskRepository=new TaskRepository();
         //taskRepository.createTask(request);
         //UpdateTaskRequest request=new UpdateTaskRequest();
         //taskRepository.updateTask(1,request);
         //taskRepository.deleteTask(1);
-        System.out.println(taskRepository.getTasks());
+        //System.out.println(taskRepository.getTasks());
+        System.out.println(taskService.getTasks());
     }
 }
