@@ -14,10 +14,14 @@ import java.time.LocalDate;
 public class App 
 {
     public static void main( String[] args ) throws IOException, SQLException {
-        CreateTaskRequest request=new CreateTaskRequest();
-        request.setDescription("learn JDBC");
-        request.setDeadline(LocalDate.now().plusWeeks(1));
-        TaskRepository taskRepository=new TaskRepository();
-        taskRepository.createTask(request);
+      // CreateTaskRequest request=new CreateTaskRequest();
+      // request.setDescription("learn JDBC");
+       //request.setDeadline(LocalDate.now().plusWeeks(1));
+       TaskRepository taskRepository=new TaskRepository();
+        //taskRepository.createTask(request);
+        //UpdateTaskRequest request=new UpdateTaskRequest();
+        //taskRepository.updateTask(1,request);
+        //taskRepository.deleteTask(1);
+        System.out.println(taskRepository.getTasks());
     }
 }
