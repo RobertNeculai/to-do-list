@@ -26,5 +26,7 @@ public class App
         //taskRepository.deleteTask(1);
         //System.out.println(taskRepository.getTasks());
         System.out.println(taskService.getTasks());
+        //Instal tomcat>- app-> tomcat -> name Tomcat-> Tomcat Home "directorul de instalare" -> debifare after launch-> Http port 8081 -> fix-> to-do-list:war_exploaded-> app context
+        //ramane doar / -> debug
     }
 }
