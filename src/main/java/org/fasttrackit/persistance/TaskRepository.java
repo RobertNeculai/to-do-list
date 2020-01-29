@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository {
-    public void createTask(CreateTaskRequest request) throws IOException, SQLException {
+    public void createTask(CreateTaskRequest request) throws IOException, SQLException, ClassNotFoundException {
         // preventing SQL injection by avoiding concatanation using preparedStatement
         String sql="INSERT INTO task (description, deadline) VALUES (?,?)";
         try(Connection connection=DatabaseConfiguration.getConnection();
@@ -20,7 +20,7 @@ public class TaskRepository {
             preparedStatement.executeUpdate();
         }
     }
-    public void updateTask(long id,UpdateTaskRequest request) throws IOException, SQLException {
+    public void updateTask(long id,UpdateTaskRequest request) throws IOException, SQLException, ClassNotFoundException {
         // preventing SQL injection by avoiding concatanation using preparedStatement
         String sql="UPDATE task SET done=? WHERE id= ?";
         try(Connection connection=DatabaseConfiguration.getConnection();
@@ -30,7 +30,7 @@ public class TaskRepository {
             preparedStatement.executeUpdate();
         }
     }
-    public void deleteTask(long id) throws IOException, SQLException {
+    public void deleteTask(long id) throws IOException, SQLException, ClassNotFoundException {
         // preventing SQL injection by avoiding concatanation using preparedStatement
         String sql="DELETE FROM task WHERE id= ?";
         try(Connection connection=DatabaseConfiguration.getConnection();
@@ -39,7 +39,7 @@ public class TaskRepository {
             preparedStatement.executeUpdate();
         }
     }
-    public List<Task> getTasks() throws IOException, SQLException {
+    public List<Task> getTasks() throws IOException, SQLException, ClassNotFoundException {
         String sql=" SELECT id, description, deadline, done FROM task";
         try(Connection connection=DatabaseConfiguration.getConnection();
             // Statement used only for no parameter queries

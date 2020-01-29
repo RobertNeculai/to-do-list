@@ -14,7 +14,7 @@ import java.time.LocalDate;
  */
 public class App 
 {
-    public static void main( String[] args ) throws IOException, SQLException {
+    public static void main( String[] args ) throws IOException, SQLException, ClassNotFoundException {
       // CreateTaskRequest request=new CreateTaskRequest();
       // request.setDescription("learn JDBC");
        //request.setDeadline(LocalDate.now().plusWeeks(1));
@@ -26,7 +26,6 @@ public class App
         //taskRepository.deleteTask(1);
         //System.out.println(taskRepository.getTasks());
         System.out.println(taskService.getTasks());
-        //Instal tomcat>- app-> tomcat -> name Tomcat-> Tomcat Home "directorul de instalare" -> debifare after launch-> Http port 8081 -> fix-> to-do-list:war_exploaded-> app context
-        //ramane doar / -> debug
+
     }
 }
