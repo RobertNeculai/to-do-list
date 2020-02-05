@@ -20,6 +20,7 @@ public class TaskServlet extends HttpServlet {
     //EndPoint
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccesControlHeaders(resp);
         CreateTaskRequest request= ObjectMapperConfiguration.objectMapper.readValue(req.getReader(),CreateTaskRequest.class);
 
         try {
@@ -31,6 +32,7 @@ public class TaskServlet extends HttpServlet {
     // Endpoint Delete
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccesControlHeaders(resp);
         String id=req.getParameter("id");
         try {
             taskService.deleteTask(Long.parseLong(id));
@@ -41,6 +43,7 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccesControlHeaders(resp);
         String id = req.getParameter("id");
         UpdateTaskRequest request= ObjectMapperConfiguration.objectMapper.readValue(req.getReader(),UpdateTaskRequest.class);
         try {
@@ -52,6 +55,7 @@ public class TaskServlet extends HttpServlet {
 //Endpoint Update
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccesControlHeaders(resp);
         //List<Task> task= taskService.getTasks();
         // String response=ObjectMapperConfiguration.ObjectMapper.writeValueAsString(task);
         // response.getWriter().print(response);
@@ -60,5 +64,17 @@ public class TaskServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             resp.sendError(500, "Internal server error: " + e.getMessage());
         }
+    }
+    private void setAccesControlHeaders(HttpServletResponse resp)
+    {
+        // CORS configuration ( cross origin resource sharing)
+        resp.setHeader("Access-Control-Allow-Origin","*");
+        resp.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE");
+        resp.setHeader("Access-Control-Allow-Headers","content-type");
+    }
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccesControlHeaders(resp);
+        // for preflight requests
     }
 }
